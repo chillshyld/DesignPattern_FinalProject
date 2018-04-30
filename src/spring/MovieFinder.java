@@ -1,5 +1,7 @@
 package spring;
 
+import java.util.ArrayList;
+
 public interface MovieFinder {
-    public void readMoviesFile();
+    public ArrayList<Object>  readMoviesFile();
 }
