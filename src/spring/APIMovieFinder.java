@@ -19,10 +19,10 @@ import org.json.simple.parser.JSONParser;
 
 import static org.springframework.http.HttpHeaders.USER_AGENT;
 
-public class DBMovieFinder implements MovieFinder {
+public class APIMovieFinder implements MovieFinder {
     private String apiURL;
 
-    public DBMovieFinder(String url){
+    public APIMovieFinder(String url){
         this.apiURL = url;
     }
 

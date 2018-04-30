@@ -9,7 +9,7 @@
         <constructor-arg index="0" value="/Users/Chieh/Desktop/Year 4 Semester 2/SW Architecture/Project/src/res/movies.txt"></constructor-arg>
     </bean>
 
-    <bean id="dbMovieFinder" class="spring.DBMovieFinder">
+    <bean id="APIMovieFinder" class="spring.APIMovieFinder">
         <constructor-arg index="0" value="https://api.themoviedb.org/3/discover/movie?api_key=eac5759069a51a4fa88aaf2f5ea98aac"></constructor-arg>
     </bean>
 

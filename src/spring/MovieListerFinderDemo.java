@@ -11,16 +11,13 @@ public class MovieListerFinderDemo {
         ApplicationContext context= new ClassPathXmlApplicationContext("conf/beans.xml");
         MovieLister theatre = (MovieLister) context.getBean("movieLister");
         TabDelimitedMovieFinder textDB = (TabDelimitedMovieFinder) context.getBean("tabDelimitedMovieFinder");
-        DBMovieFinder apiDB = (DBMovieFinder) context.getBean("dbMovieFinder");
-
-
-
+        APIMovieFinder apiDB = (APIMovieFinder) context.getBean("APIMovieFinder");
 
         int userChoice = 1;
         while (userChoice != 0){
             System.out.println("Choose your movies source?");
             System.out.println("1. Text file");
-            System.out.println("2. Database file");
+            System.out.println("2. API Request");
             System.out.println("3. Exit");
 
             Scanner scanner = new Scanner(System.in);
