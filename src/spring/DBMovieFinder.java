@@ -27,8 +27,8 @@ public class DBMovieFinder implements MovieFinder {
     }
 
     @Override
-    public ArrayList<Object> readMoviesFile() {
-        ArrayList movieList = new ArrayList<JSONObject>();
+    public ArrayList<Movies> readMoviesFile() {
+        ArrayList<Movies> moviesList = new ArrayList<Movies>();
         try{
             URL obj = new URL(this.apiURL);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -52,7 +52,15 @@ public class DBMovieFinder implements MovieFinder {
             JSONParser parser = new JSONParser();
             Object data =   parser.parse(response.toString());
             JSONObject movieJSON = (JSONObject) data;
-            movieList = (ArrayList<JSONObject>) movieJSON.get("results");
+            ArrayList<JSONObject> moviesListJson = (ArrayList<JSONObject>) movieJSON.get("results");
+            for (JSONObject movies : moviesListJson){
+                String title = movies.get("title").toString();
+                String description = movies.get("overview").toString();
+                String releaseDate = movies.get("release_date").toString();
+                Movies movie = new Movies(title,description,releaseDate);
+                moviesList.add(movie);
+
+            }
 
         }catch (MalformedURLException err){
             System.out.println(err);
@@ -63,6 +71,6 @@ public class DBMovieFinder implements MovieFinder {
         }
 
 
-        return movieList;
+        return moviesList;
     }
 }

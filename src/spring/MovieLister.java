@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MovieLister {
-    private ArrayList<Object> moviesList;
+    private ArrayList<Movies> moviesList;
     private MovieFinder dbReader;
 
-    public void setMoviesList(ArrayList<Object> moviesList) {
+    public void setMoviesList(ArrayList<Movies> moviesList) {
         this.moviesList = moviesList;
     }
 
@@ -18,7 +18,12 @@ public class MovieLister {
 
     public void displayMovies(){
         this.moviesList = this.dbReader.readMoviesFile();
-        System.out.println(this.moviesList);
+        for (Movies movies : this.moviesList){
+            System.out.println("title: " + movies.getTitle());
+            System.out.println("description: " + movies.getDescription());
+            System.out.println("release_date: " + movies.getReleaseDate());
+            System.out.println();
+        }
     }
 }
 

@@ -13,19 +13,19 @@ public class TabDelimitedMovieFinder implements MovieFinder{
         this.inputFile = inputFile;
     }
     @Override
-    public ArrayList<Object> readMoviesFile() {
-        ArrayList<Object> movies = new ArrayList<>();
+    public ArrayList<Movies> readMoviesFile() {
+        ArrayList<Movies> moviesList = new ArrayList<Movies>();
         Path inputPath = Paths.get(this.inputFile);
         try (Scanner scanner = new Scanner(inputPath)) {
-            String movie;
+            String moviesTitle;
             while (scanner.hasNextLine()){
-                movie = scanner.nextLine();
-                movies.add(movie);
+                moviesTitle = scanner.nextLine();
+                moviesList.add(new Movies(moviesTitle,"",""));
             }
         }catch (IOException err){
             System.out.println("Error reading file: " + err);
         }
-        return movies;
+        return moviesList;
     }
 
 
